@@ -1,16 +1,14 @@
-use session2;
-CREATE TABLE book(
-	book_id char(5) PRIMARY KEY,
-    book_name VARCHAR(200) NOT NULL,
-    quantity INT CHECK(quantity>=0),
-    price DECIMAL(10,2) DEFAULT (5000)
+CREATE TABLE BOOK (
+    MaSach CHAR(5) PRIMARY KEY,
+    TenSach VARCHAR(200) NOT NULL,
+    SoLuong INT CHECK (SoLuong >= 0),
+    GiaThue DECIMAL(10,2) DEFAULT 5000
 );
-ALTER TABLE book
-ADD COLUMN NGAYNHAP DATE;
-
-CREATE TABLE borrow_books(
-	borrow_id INT AUTO_INCREMENT PRIMARY KEY,
-    book_id CHAR(5),
-    FOREIGN KEY (book_id) REFERENCES book(book_id),
-    borrowdate DATE DEFAULT (CURRENT_DATE)
+ALTER TABLE BOOK
+ADD NgayNhap DATE;
+CREATE TABLE BORROW_BOOKS (
+    MaMuon INT AUTO_INCREMENT PRIMARY KEY,
+    MaSach CHAR(5),
+    NgayMuon DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (MaSach) REFERENCES BOOK(MaSach)
 );
